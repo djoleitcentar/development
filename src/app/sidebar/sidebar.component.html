@@ -1,0 +1,98 @@
+<section class="sidebar" [ngClass]="!open ? 'open' : null">
+    <div class="sidebar__container">
+        <div class="sidebar__top">
+            <div class="sidebar__top-close">
+                <div class="logo__container">
+                    <img class="logo" src="../../assets/shield.png" alt="logo" (click)="toggleSidebar(false)">
+                    <p class="logo-name" [ngClass]="!open ? 'open' : null">Docket</p>
+                </div>
+                <div class="sidebar__top-icon" [ngClass]="!open ? 'open' : null">
+                    <ng-icon class="icon-close" name="bootstrapXLg" (click)="toggleSidebar(false)"></ng-icon>
+                    <span class="tooltip">
+                        <span class="tooltip-arrow"></span>
+                        <span class="tooltip-text">Hide navigation</span>
+                    </span>
+                </div>
+            </div>
+            <div class="sidebar__item sidebar__search">
+                @if (open) {
+                    <ng-icon class="icon-search" name="bootstrapSearch" [ngClass]="!open ? 'open' : null" (click)="toggleSidebar(true)"></ng-icon>
+                    <input class="search-input" type="text" placeholder="Search" [ngClass]="!open ? 'open' : null">
+                }
+                @else {
+                    <ul>
+                        <li>
+                            <a (click)="toggleSidebar(true)">
+                                <ng-icon class="icon" name="bootstrapSearch"></ng-icon>
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+            <div class="sidebar__line"></div>
+            <div class="sidebar__item sidebar__center">
+                <ul>
+                    @for (item of menuItemsCenter; track item) {
+                        @if (item.options) {
+                            <li>
+                                <a routerLink="{{item.route}}" routerLinkActive="active" (click)="toggleSidebar(true); toggleDropdown()">
+                                    <ng-icon class="icon" name={{item.icon}}></ng-icon>
+                                    <span class="item-name" [ngClass]="!open ? 'open' : null">
+                                        {{item.name}}
+                                        <ng-icon class="icon-dropdown" name="bootstrapChevronUp" [ngClass]="dropdown ? null : 'dropdown-active'"></ng-icon>
+                                    </span>
+                                </a>
+                            </li>
+                            <div class="sidebar__center-options" [ngClass]="!open || !dropdown ? null : 'dropdown-opened'">
+                                <ul>
+                                    @for (option of item.options; track option) {
+                                        <li>
+                                            <ng-icon name="bootstrapCircleFill" [ngStyle]="{'color': option.color, 'font-size': '0.5rem'}"></ng-icon>
+                                            <a>
+                                                {{ option.name }}
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                        @else {
+                            <li>
+                                <a routerLink="{{item.route}}" routerLinkActive="active" (click)="toggleSidebar(true)">
+                                    <ng-icon class="icon" name={{item.icon}}></ng-icon>
+                                    <span class="item-name" [ngClass]="!open ? 'open' : null">
+                                        {{item.name}}
+                                    </span>
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="sidebar__line"></div>
+            <div class="sidebar__item sidebar__bottom">
+                <ul>
+                    @for (item of menuItemsBottom; track item) {
+                        <li>
+                            <a routerLink="{{item.route}}" routerLinkActive="active" (click)="toggleSidebar(true)">
+                                <ng-icon class="icon" name={{item.icon}}></ng-icon>
+                                <span class="item-name" [ngClass]="!open ? 'open' : null">
+                                    {{item.name}}
+                                </span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="sidebar__profile">
+                <div class="sidebar__profile-details">
+                    <img class="avatar" src="../../assets/avatar.svg" alt="avatar">
+                    <p class="item-name" [ngClass]="!open ? 'open' : null">Jane Cooper</p>
+                </div>
+                <ng-icon class="icon-dots" name="bootstrapThreeDots" [ngClass]="!open ? 'open' : null"></ng-icon>
+            </div>
+        </div>
+    </div>
+</section>
