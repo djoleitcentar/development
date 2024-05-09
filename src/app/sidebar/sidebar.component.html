@@ -36,7 +36,7 @@
                 }
             </div>
             <div class="sidebar__line"></div>
-            <div class="sidebar__item sidebar__center">
+            <div class="sidebar__item sidebar__center" [ngStyle]="isOpen ? {'overflow-y': 'auto'} : null">
                 <ul>
                     @for (item of menuItemsCenter; track item) {
                         @if (item.options) {

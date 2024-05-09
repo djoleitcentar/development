@@ -71,6 +71,7 @@
     }
 
     &__top {
+        height: 42rem;
         display: flex;
         flex-direction: column;
         align-items: start;
@@ -94,6 +95,7 @@
         display: flex;
         flex-direction: column;
         justify-content: start;
+        scrollbar-width: none;
 
         &-options {
             display: none;
