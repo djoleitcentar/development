@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
   bootstrapSearch,
@@ -17,7 +17,7 @@ import {
 } from '@ng-icons/bootstrap-icons';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { menuItemsCenterData, menuItemsBottomData } from './sidebar-config';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sidebar',
@@ -25,6 +25,7 @@ import { menuItemsCenterData, menuItemsBottomData } from './sidebar-config';
   imports: [NgIconComponent, CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
+  encapsulation: ViewEncapsulation.None,
   viewProviders: [provideIcons({
     bootstrapSearch,
     bootstrapHouse,
@@ -41,15 +42,30 @@ import { menuItemsCenterData, menuItemsBottomData } from './sidebar-config';
     bootstrapCircleFill
   })]
 })
+
 export class SidebarComponent {
+  @Input() logo: string;
+  @Input() menuItemsCenter: any;
+  @Input() menuItemsBottom: any;
+  @Input() htmlContent: string;
+  @Output() inputValueChange = new EventEmitter<string>();
+  inputValue: string = '';
   isOpen = true;
   // isDropdownOpen = false;
-  menuItemsCenter = menuItemsCenterData;
-  menuItemsBottom = menuItemsBottomData;
 
+  constructor(private sanitizer: DomSanitizer ) {}
 
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+  
   toggleSidebar() {
     this.isOpen = !this.isOpen;
+  }
+
+  onSearch(value: string) {
+    this.inputValue = value;
+    this.inputValueChange.emit(value);
   }
 
   // toggleDropdown() {
