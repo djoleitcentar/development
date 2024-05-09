@@ -17,6 +17,7 @@ import {
 } from '@ng-icons/bootstrap-icons';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { menuItemsCenterData, menuItemsBottomData } from './sidebar-config';
 
 @Component({
   selector: 'app-sidebar',
@@ -41,82 +42,17 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   })]
 })
 export class SidebarComponent {
-  open = true;
-  dropdown = false;
+  isOpen = true;
+  // isDropdownOpen = false;
+  menuItemsCenter = menuItemsCenterData;
+  menuItemsBottom = menuItemsBottomData;
 
-  menuItemsCenter = [
-    {
-      name: 'Home',
-      icon: 'bootstrapHouse',
-      route: 'home'
-    },
-    {
-      name: 'Calendar',
-      icon: 'bootstrapCalendar',
-      route: 'calendar'
-    },
-    {
-      name: 'Messages',
-      icon: 'bootstrapChat',
-      route: 'messages'
-    },
-    {
-      name: 'Projects',
-      icon: 'bootstrapBriefcase',
-      route: 'projects',
-      options: [
-        {
-          name: 'Google',
-          color: '#f39c4f'
-        },
-        {
-          name: 'Amazon',
-          color: '#ec5a5a'
-        },
-        {
-          name: 'Facebook',
-          color: '#2e9c5d'
-        },
-        {
-          name: 'Airbnb',
-          color: '#329fdc'
-        }
-      ]
-    },
-    {
-      name: 'Progress',
-      icon: 'bootstrapBarChart',
-      route: 'progress'
-    },
-    {
-      name: 'Goals',
-      icon: 'bootstrapBullseye',
-      route: 'goals'
-    }
-  ]
 
-  menuItemsBottom = [
-    {
-      name: 'Notifications',
-      icon: 'bootstrapBell',
-      route: 'notifications'
-    },
-    {
-      name: 'Settings',
-      icon: 'bootstrapGear',
-      route: 'settings'
-    }
-  ]
-
-  toggleSidebar(open: boolean) {
-    if (open) {
-      this.open = true;
-    } else {
-      this.open = !this.open;
-    }
+  toggleSidebar() {
+    this.isOpen = !this.isOpen;
   }
 
-  toggleDropdown() {
-    this.dropdown = !this.dropdown;
-  }
+  // toggleDropdown() {
+  //   this.isDropdownOpen = !this.isDropdownOpen;
+  // }
 }

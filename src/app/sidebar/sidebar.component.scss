@@ -1,11 +1,11 @@
 .sidebar {
-    height: 100vh;
+    min-height: 100vh;
     width: 15rem;
     background-color: var(--color-white);
     transition: all 0.5s ease;
 
     &__container {
-        height: 100%;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -51,6 +51,7 @@
             }
             
             a {
+                width: 100%;
                 padding: 0.5rem;
                 display: flex;
                 align-items: center;
@@ -254,4 +255,17 @@
 
 .sidebar__center-options.dropdown-opened {
     display: flex;
+}
+
+.item-list-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-list-item:hover .tooltip {
+    display: block;
+    transform: translateX(2rem) translateY(0);
+    
 }
