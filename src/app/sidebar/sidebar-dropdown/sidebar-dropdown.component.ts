@@ -13,8 +13,13 @@ export class SidebarDropdownComponent {
   @Input() isOpen!: boolean;
   @Input() item;
   @Output() isOpenSidebar = new EventEmitter<boolean>(this.isOpen);
+  isDropdownOpen = false;
 
   isOpenStateChanged() {
     this.isOpenSidebar.emit(this.isOpen);
+  }
+
+    toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }

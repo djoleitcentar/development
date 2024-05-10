@@ -30,8 +30,7 @@ export const menuItemsCenterData = [
             name: 'Airbnb',
             color: '#329fdc'
             }
-        ],
-        isDropdownOpen: false
+        ]
     },
     {
         name: 'Projects',
@@ -54,8 +53,7 @@ export const menuItemsCenterData = [
             name: 'Airbnb',
             color: '#329fdc'
             }
-        ],
-        isDropdownOpen: false
+        ]
         },
         {
         name: 'Progress',

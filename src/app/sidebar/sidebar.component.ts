@@ -50,20 +50,17 @@ export class SidebarComponent {
   @Input() menuItemsBottom: any;
   @Input() htmlContent: string;
   @Output() handleSearch = new EventEmitter<string>();
-  inputValue: string = '';
+  @Output() isOpenChanged = new EventEmitter<boolean>(true)
   isOpen = true;
-  // isDropdownOpen = false;
+  inputValue: string = '';
   
   toggleSidebar(event?) {
     event ? this.isOpen = event : this.isOpen = !this.isOpen;
+    this.isOpenChanged.emit(this.isOpen);
   }
 
   onSearch(value: string) {
     this.inputValue = value;
     this.handleSearch.emit(value);
   }
-
-  // toggleDropdown() {
-  //   this.isDropdownOpen = !this.isDropdownOpen;
-  // }
 }
