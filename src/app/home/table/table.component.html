@@ -1,0 +1,24 @@
+<table class="table table-auto w-full shadow rounded-lg overflow-hidden">
+    <thead class="bg-gray-100 border-b border-gray-200 text-black">
+        <tr>
+        @for (item of tableKeys; track item) {
+            <th class="px-8 py-4 text-left capitalize">{{ item.title }}</th>
+        }
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (row of tableData; track row) {
+            <tr>
+                @for (item of tableKeys; track item) {
+                    <td class="px-8 py-4 border-b text-gray-500 border-gray-200 bg-white text-left">{{ row[item.key] }}</td>
+                }
+                <td class="px-8 py-4 border-b text-gray-800 border-gray-200 bg-white text-left">
+                @if (row.edit) {
+                        <button (click)="handleEdit(row)">Edit</button>
+                    }
+                </td>
+            </tr>   
+        }
+    </tbody>
+</table>
