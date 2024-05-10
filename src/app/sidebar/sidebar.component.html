@@ -41,53 +41,10 @@
             <ul>
                 @for (item of menuItemsCenter; track item) {
                     @if (item.options) {
-                        <li class="item-list-item">
-                            <a routerLink="{{item.route}}" routerLinkActive="active" (click)="!isOpen ? toggleSidebar() : null; item.isDropdownOpen = !item.isDropdownOpen">
-                                <span>
-                                    <ng-icon class="icon" name={{item.icon}}></ng-icon>
-                                </span>
-                                <span class="item-name" [ngClass]="!isOpen ? 'open' : null">
-                                    {{item.name}}
-                                    <ng-icon class="icon-dropdown" name="bootstrapChevronUp" [ngClass]="item.isDropdownOpen ? null : 'dropdown-active'"></ng-icon>
-                                </span>
-                                @if (!isOpen) {
-                                    <span class="tooltip">
-                                        <span class="tooltip-arrow"></span>
-                                        <span class="tooltip-text">{{ item.name }}</span>
-                                    </span>
-                                }
-                            </a>
-                        </li>
-                        <div class="sidebar__center-options" [ngClass]="!isOpen || !item.isDropdownOpen ? null : 'dropdown-opened'">
-                            <ul>
-                                @for (option of item.options; track option) {
-                                    <li class="item-list-item">
-                                        <a>
-                                            <ng-icon name="bootstrapCircleFill" [ngStyle]="{'color': option.color, 'font-size': '0.5rem'}"></ng-icon>
-                                            {{ option.name }}
-                                        </a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
+                        <app-sidebar-dropdown [item]="item" [isOpen]="isOpen" (isOpenSidebar)="toggleSidebar($event)"/>
                     }
                     @else {
-                        <li class="item-list-item">
-                            <a routerLink="{{item.route}}" routerLinkActive="active" (click)="!isOpen ? toggleSidebar() : null">
-                                <span>
-                                    <ng-icon class="icon" name={{item.icon}}></ng-icon>
-                                </span>
-                                <span class="item-name" [ngClass]="!isOpen ? 'open' : null">
-                                    {{item.name}}
-                                </span>
-                                @if (!isOpen) {
-                                    <span class="tooltip">
-                                        <span class="tooltip-arrow"></span>
-                                        <span class="tooltip-text">{{ item.name }}</span>
-                                    </span>
-                                }
-                            </a>
-                        </li>
+                        <app-sidebar-item [item]="item" [isOpen]="isOpen" (isOpenSidebar)="toggleSidebar($event)"/>
                     }
                 }
             </ul>
@@ -98,31 +55,17 @@
             <div class="sidebar__item sidebar__bottom">
                 <ul>
                     @for (item of menuItemsBottom; track item) {
-                        <li class="item-list-item">
-                            <a routerLink="{{item.route}}" routerLinkActive="active" (click)="!isOpen ? toggleSidebar() : null">
-                                <span>
-                                    <ng-icon class="icon" name={{item.icon}}></ng-icon>
-                                </span>
-                                <span class="item-name" [ngClass]="!isOpen ? 'open' : null">
-                                    {{item.name}}
-                                </span>
-                                @if (!isOpen) {
-                                    <span class="tooltip">
-                                        <span class="tooltip-arrow"></span>
-                                        <span class="tooltip-text">{{ item.name }}</span>
-                                    </span>
-                                }
-                            </a>
-                        </li>
+                        <app-sidebar-item [item]="item" [isOpen]="isOpen" (isOpenSidebar)="toggleSidebar($event)"/>
                     }
                 </ul>
             </div>
-                <div class="sidebar__profile" [innerHTML]="sanitizeHtml(htmlContent)">
+                <div class="sidebar__profile">
                     <!-- <div class="sidebar__profile-details">
                         <img class="avatar" src="../../assets/avatar.svg" alt="avatar">
                         <p class="item-name" [ngClass]="!isOpen ? 'open' : null">Jane Cooper</p>
                     </div>
                     <ng-icon class="icon-dots" name="bootstrapThreeDots" [ngClass]="!isOpen ? 'open' : null"></ng-icon> -->
+                    <ng-content></ng-content>
                 </div>
             </div>
         </div>

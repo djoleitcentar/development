@@ -1,0 +1,16 @@
+<li class="item-list-item">
+    <a routerLink="{{item.route}}" routerLinkActive="active" (click)="!isOpen ? isOpenStateChanged() : null">
+        <span>
+            <ng-icon class="icon" name={{item.icon}}></ng-icon>
+        </span>
+        <span class="item-name" [ngClass]="!isOpen ? 'open' : null">
+            {{item.name}}
+        </span>
+        @if (!isOpen) {
+            <span class="tooltip">
+                <span class="tooltip-arrow"></span>
+                <span class="tooltip-text">{{ item.name }}</span>
+            </span>
+        }
+    </a>
+</li>

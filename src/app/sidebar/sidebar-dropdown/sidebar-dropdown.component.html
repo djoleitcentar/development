@@ -1,0 +1,29 @@
+<li class="item-list-item">
+    <a routerLink="{{item.route}}" routerLinkActive="active" (click)="!isOpen ? isOpenStateChanged() : null; item.isDropdownOpen = !item.isDropdownOpen">
+        <span>
+            <ng-icon class="icon" name={{item.icon}}></ng-icon>
+        </span>
+        <span class="item-name" [ngClass]="!isOpen ? 'open' : null">
+            {{item.name}}
+            <ng-icon class="icon-dropdown" name="bootstrapChevronUp" [ngClass]="item.isDropdownOpen ? null : 'dropdown-active'"></ng-icon>
+        </span>
+        @if (!isOpen) {
+            <span class="tooltip">
+                <span class="tooltip-arrow"></span>
+                <span class="tooltip-text">{{ item.name }}</span>
+            </span>
+        }
+    </a>
+</li>
+<div class="sidebar__center-options" [ngClass]="!isOpen || !item.isDropdownOpen ? null : 'dropdown-opened'">
+    <ul>
+        @for (option of item.options; track option) {
+            <li class="item-list-item">
+                <a>
+                    <ng-icon name="bootstrapCircleFill" [ngStyle]="{'color': option.color, 'font-size': '0.5rem'}"></ng-icon>
+                    {{ option.name }}
+                </a>
+            </li>
+        }
+    </ul>
+</div>
