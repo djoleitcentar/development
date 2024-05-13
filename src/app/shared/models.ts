@@ -10,3 +10,10 @@ export type Key = {
     title: string;
     key: string;
 }
+
+export type Field = {
+    label: string;
+    placeholder: string;
+    formControlName: string;
+    value: string;
+}
