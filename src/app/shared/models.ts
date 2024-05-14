@@ -12,8 +12,11 @@ export type Key = {
 }
 
 export type Field = {
+    type: string;
+    colSize: string;
     label: string;
-    placeholder: string;
+    placeholder?: string;
     formControlName: string;
     value: string;
+    options?: string[];
 }

@@ -1,0 +1,14 @@
+<div class="flex flex-col" [ngClass]="field.colSize">
+    <label
+        class="text-xs font-thin"
+        [for]="field.formControlName"
+    >
+        {{ field.label }}
+    </label>
+    <input
+        class="w-full mt-2 mb-6 px-5 py-3 bg-white border border-slate-100 outline-none rounded-lg"
+        type="text"
+        [placeholder]="field.placeholder"
+        [formControlName]="field.formControlName"
+    />
+</div>

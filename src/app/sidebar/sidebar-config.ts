@@ -5,9 +5,9 @@ export const menuItemsCenterData = [
         route: 'home'
     },
     {
-        name: 'Calendar',
+        name: 'Form',
         icon: 'bootstrapCalendar',
-        route: 'calendar'
+        route: 'form'
     },
     {
         name: 'Messages',
