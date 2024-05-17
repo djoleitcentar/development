@@ -5,6 +5,7 @@ import { FormComponent } from './form/form.component';
 import { LoginComponent } from './login/login.component';
 import { HomelayoutComponent } from './homelayout/homelayout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { UsersComponent } from './users/users.component';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'homelayout' },
@@ -14,7 +15,7 @@ export const routes: Routes = [
         { path: 'form', component: FormComponent },
         { path: 'messages', component: SidebarComponent },
         { path: 'projects', component: SidebarComponent },
-        { path: 'progress', component: SidebarComponent },
+        { path: 'users', component: UsersComponent },
         { path: 'goals', component: SidebarComponent },
         { path: 'notifications', component: SidebarComponent },
         { path: 'settings', component: SidebarComponent }

@@ -1,0 +1,28 @@
+<section class="w-full h-screen mx-12 flex flex-col justify-center items-center gap-y-6">
+    <div class="w-full flex justify-between items-center">
+        <h1 class="text-xl">Users</h1>
+        <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg">
+            <ng-icon name="bootstrapPlusCircle"></ng-icon>
+            Create
+        </button>
+    </div>
+    <div class="w-full p-4 bg-white rounded-lg flex flex-col gap-y-6">
+        <div class="flex justify-between items-end">
+            <div>
+                <app-form-builder [formFields]="usersHeaderFilterFields" [formGroup]="usersFormGroup"/>
+            </div>
+            <div class="flex justify-between gap-x-4">
+                <button class="px-3 py-2 flex items-center bg-blue-950 text-white text-base font-semibold rounded-lg">
+                    <ng-icon name="bootstrapArrowClockwise"></ng-icon>
+                </button>
+                <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg">
+                    <ng-icon name="bootstrapSearch"></ng-icon>
+                    Search
+                </button>
+            </div>
+        </div>
+        <div>
+            <app-table [tableKeys]="tableKeys" [tableData]="tableData"/>
+        </div>
+    </div>
+</section>

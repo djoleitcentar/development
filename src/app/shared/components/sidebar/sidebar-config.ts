@@ -56,9 +56,9 @@ export const menuItemsCenterData = [
         ]
         },
         {
-        name: 'Progress',
+        name: 'Users',
         icon: 'bootstrapBarChart',
-        route: 'progress'
+        route: 'users'
         },
         {
         name: 'Goals',
