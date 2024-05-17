@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
-import { Field } from '../../../shared/models';
+import { Field } from '../../../models/index';
 import { NgClass } from '@angular/common';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Field } from '../../shared/models';
+import { Field } from '../../models/index';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormInputComponent } from './form-input/form-input.component';
 import { DropdownComponent } from './dropdown/dropdown.component';

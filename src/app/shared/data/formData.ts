@@ -1,32 +1,34 @@
-
 export const formFieldsData = [
     {
-        type: "input",
-        colSize: "col-span-2",
+        type: "text",
+        ctrlType: "input",
+        colSize: "col-span-12",
         label: "Name",
         placeholder: "John...",
         formControlName: "name",
         value: ""
     },
     {
-        type: "input",
-        colSize: "col-span-9",
+        type: "email",
+        ctrlType: "input",
+        colSize: "col-span-12",
         label: "Email",
         placeholder: "john@mail.com",
         formControlName: "email",
         value: ""
     },
     {
-        type: "input",
-        colSize: "col-span-3",
+        type: "text",
+        ctrlType: "input",
+        colSize: "col-span-12",
         label: "Phone",
         placeholder: "061 321 573",
         formControlName: "phone",
         value: ""
     },
     {
-        type: "dropdown",
-        colSize: "col-span-9",
+        ctrlType: "dropdown",
+        colSize: "col-span-12",
         label: "Brand",
         placeholder: "Choose brand",
         formControlName: "brand",
@@ -56,8 +58,8 @@ export const formFieldsData = [
         ]
     },
     {
-        type: "textarea",
-        colSize: "col-span-3",
+        ctrlType: "textarea",
+        colSize: "col-span-12",
         label: "Message",
         placeholder: "Message...",
         formControlName: "message",

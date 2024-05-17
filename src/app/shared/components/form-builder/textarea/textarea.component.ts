@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
-import { Field } from '../../../shared/models';
+import { Field } from '../../../models/index';
 import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-form-input',
+  selector: 'app-textarea',
   standalone: true,
   imports: [ReactiveFormsModule, NgClass],
-  templateUrl: './form-input.component.html',
-  styleUrl: './form-input.component.scss',
+  templateUrl: './textarea.component.html',
+  styleUrl: './textarea.component.scss',
   viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
 })
-export class FormInputComponent {
+export class TextareaComponent {
   @Input() field: Field;
 }

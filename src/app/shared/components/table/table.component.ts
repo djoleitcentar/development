@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Key, User } from '../../shared/models';
+import { Key, User } from '../../models/index';
 import { CommonModule } from '@angular/common';
 
 @Component({

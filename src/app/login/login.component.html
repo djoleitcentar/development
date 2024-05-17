@@ -1,1 +1,29 @@
-<p>login works!</p>
+<section class="w-screen h-screen flex">
+    <div class="w-auto flex flex-col flex-1 gap-y-6 justify-center items-center bg-slate-100">
+        <img class="w-48" src="../../assets/itclogo.svg" alt="itclogo">
+        <div class="p-8 flex flex-col gap-y-8 bg-white rounded-lg">
+            
+            <app-form-builder [formFields]="formFields" [formGroup]="formGroup">
+            </app-form-builder>
+
+            <div class="flex flex-col items-center gap-y-4">
+                <button
+                    class="w-full py-2 flex justify-center bg-blue-950 hover:bg-blue-900 transition-all ease-in duration-200 rounded-lg text-white font-semibold"
+                    type="button"
+                    (click)="handleSubmit()"
+                >
+                    <span class="flex items-center gap-x-2">
+                        <ng-icon size="1rem" name="bootstrapBoxArrowInRight"></ng-icon>
+                        <span>
+                            Submit
+                        </span>
+                    </span>
+                </button>  
+                <a class="cursor-pointer">Forgot password?</a>
+            </div>
+        </div>
+    </div>
+    <div class="flex">
+        <img class="w-full h-full" src="../../assets/login-image.png" alt="login-image">
+    </div>
+</section>

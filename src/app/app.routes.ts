@@ -1,13 +1,15 @@
 import { Routes } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
 import { FormComponent } from './form/form.component';
 import { LoginComponent } from './login/login.component';
 import { HomelayoutComponent } from './homelayout/homelayout.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'homelayout' },
-    { path: 'homelayout', component: HomelayoutComponent, children: [
+    { path: 'login', component: LoginComponent },
+    { path: 'homelayout', component: HomelayoutComponent, canActivate: [AuthGuard], children: [
         { path: 'home', component: HomeComponent },
         { path: 'form', component: FormComponent },
         { path: 'messages', component: SidebarComponent },
@@ -17,5 +19,5 @@ export const routes: Routes = [
         { path: 'notifications', component: SidebarComponent },
         { path: 'settings', component: SidebarComponent }
     ]},
-    { path: 'login', component: LoginComponent }
+    { path: '**', redirectTo: '/'}
 ];

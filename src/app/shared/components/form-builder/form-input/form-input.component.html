@@ -1,13 +1,13 @@
 <div class="flex flex-col" [ngClass]="field.colSize">
     <label
-        class="text-xs font-thin"
+        class="text-sm font-normal"
         [for]="field.formControlName"
     >
         {{ field.label }}
     </label>
     <input
-        class="w-full mt-2 mb-6 px-5 py-3 bg-white border border-slate-100 outline-none rounded-lg"
-        type="text"
+        class="w-full mt-2 px-5 py-2 bg-white border border-slate-100 outline-none rounded-lg"
+        [type]="field.type"
         [placeholder]="field.placeholder"
         [formControlName]="field.formControlName"
     />

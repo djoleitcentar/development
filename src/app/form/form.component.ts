@@ -1,31 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilderComponent } from './form-builder/form-builder.component';
-import { formFieldsData } from '../formData';
-import { Field } from '../shared/models';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilderComponent } from '../shared/components/form-builder/form-builder.component';
+import { Field } from '../shared/models/index';
+import { FormGroup } from '@angular/forms';
+import { NgClass } from '@angular/common';
+import { formFieldsData } from '../shared/data/formData';
+import { FormBuilderService } from '../shared/services/form-builder.service';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [FormBuilderComponent],
+  imports: [NgClass, FormBuilderComponent],
   templateUrl: './form.component.html'
 })
 export class FormComponent implements OnInit {
-  formFields: Field[] = formFieldsData;
+  @Input() formFields: Field[] = formFieldsData;
   formGroup: FormGroup;
 
-  ngOnInit() {
-    this.createForm();
-  }
+  constructor(private formBuiderService: FormBuilderService) {}
 
-  createForm() {
-    this.formGroup = new FormGroup({})
-    this.formFields.forEach(field => {
-      this.formGroup.addControl(field.formControlName, new FormControl(field.value))
-    })
-  }
-
-  handleSubmit() {
-    console.log(this.formGroup.value);
+  ngOnInit(): void {
+    this.formGroup = this.formBuiderService.createForm(this.formFields);
   }
 }

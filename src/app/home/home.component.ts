@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { TableComponent } from './table/table.component';
-import { keys, users } from '../tableData';
-import { Key, User } from '../shared/models';
+import { Component, OnInit } from '@angular/core';
+import { TableComponent } from '../shared/components/table/table.component';
+import { keys, users } from '../shared/data/tableData';
+import { Key, User } from '../shared/models/index';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -16,4 +17,10 @@ export class HomeComponent {
   logRawData(rawData: User) {
     console.log(rawData);
   }
+
+  // constructor(private authService: AuthService) {}
+
+  // ngOnInit(): void {
+  //   console.log(this.authService.getCredentials())
+  // }
 }

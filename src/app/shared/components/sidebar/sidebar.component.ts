@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewEncapsulation, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
   bootstrapSearch,

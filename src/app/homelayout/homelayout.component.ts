@@ -5,8 +5,8 @@ import {
   bootstrapThreeDots
 } from '@ng-icons/bootstrap-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { menuItemsCenterData, menuItemsBottomData } from '../../app/sidebar/sidebar-config';
+import { SidebarComponent } from '../shared/components/sidebar/sidebar.component';
+import { menuItemsCenterData, menuItemsBottomData } from '../shared/components/sidebar/sidebar-config';
 
 @Component({
   selector: 'app-homelayout',
