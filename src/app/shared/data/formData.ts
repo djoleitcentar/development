@@ -2,7 +2,7 @@ export const formFieldsData = [
     {
         type: "text",
         ctrlType: "input",
-        colSize: "col-span-12",
+        colSize: "col-span-6",
         label: "Name",
         placeholder: "John...",
         formControlName: "name",
@@ -11,7 +11,7 @@ export const formFieldsData = [
     {
         type: "email",
         ctrlType: "input",
-        colSize: "col-span-12",
+        colSize: "col-span-6",
         label: "Email",
         placeholder: "john@mail.com",
         formControlName: "email",
@@ -20,7 +20,7 @@ export const formFieldsData = [
     {
         type: "text",
         ctrlType: "input",
-        colSize: "col-span-12",
+        colSize: "col-span-6",
         label: "Phone",
         placeholder: "061 321 573",
         formControlName: "phone",
@@ -28,7 +28,7 @@ export const formFieldsData = [
     },
     {
         ctrlType: "dropdown",
-        colSize: "col-span-12",
+        colSize: "col-span-6",
         label: "Brand",
         placeholder: "Choose brand",
         formControlName: "brand",

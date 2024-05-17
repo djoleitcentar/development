@@ -7,11 +7,12 @@ import {
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { SidebarComponent } from '../shared/components/sidebar/sidebar.component';
 import { menuItemsCenterData, menuItemsBottomData } from '../shared/components/sidebar/sidebar-config';
+import { HeaderComponent } from '../shared/components/header/header.component';
 
 @Component({
   selector: 'app-homelayout',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, NgIconComponent, SidebarComponent],
+  imports: [RouterOutlet, CommonModule, NgIconComponent, SidebarComponent, HeaderComponent],
   templateUrl: './homelayout.component.html',
   viewProviders: [provideIcons({
     bootstrapThreeDots
