@@ -10,9 +10,5 @@ export const usersTableKeys = [
     {
         title: "role",
         key: "role"
-    },
-    {
-        title: "action",
-        key: "action"
     }
 ]

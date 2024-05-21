@@ -1,0 +1,56 @@
+<div class="flex justify-between items-center gap-x-2">
+    <!-- Chevron Left -->
+    @if (currentPage > 1) {
+        <button class="page-button" (click)="handlePage(-1);">
+            <ng-icon name="bootstrapChevronLeft"></ng-icon>
+        </button>
+    }
+    <!-- Page 1 -->
+    <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === 1 ? 'rgb(229 231 235)' : 'transparent'}">1</button>
+    <!-- Previous 5 pages -->
+    @if (currentPage > 5) {
+        <button class="w-10 h-10 grid place-items-center" (click)="handlePage(-5);">
+            <ng-icon name="bootstrapThreeDots"></ng-icon>
+        </button>
+    }
+    <!-- Current 5 pages -->
+    @for (page of pages; track page) {
+        @if (currentPage <= 5) {
+            @if (page !== 1 && page <= 5) {
+                <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === page ? 'rgb(229 231 235)' : 'transparent'}">
+                    {{ page }}
+                </button>
+            }
+        }
+        @if (currentPage !== 1 && currentPage > 5) {
+            @if (page !== 1 && page !== pages.length && page >= currentPage - 2 && page <= currentPage + 2) {
+                <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === page ? 'rgb(229 231 235)' : 'transparent'}">
+                    {{ page }}
+                </button>
+            }
+        }
+        @if (currentPage > pages.length - 3) {
+            @if (page <= currentPage - 1 && page >= currentPage - 3) {
+                <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === page ? 'rgb(229 231 235)' : 'transparent'}">
+                    {{ page }}
+                </button>
+            }
+        }
+    }
+    <!-- Next 5 pages -->
+    @if (currentPage < pages.length -3) {
+        <button class="w-10 h-10 grid place-items-center" (click)="handlePage(5);">
+            <ng-icon name="bootstrapThreeDots"></ng-icon>
+        </button>
+    }
+    <!-- Last page -->
+    <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === pages.length ? 'rgb(229 231 235)' : 'transparent'}">
+        {{ pages.length }}
+    </button>
+    <!-- Chevron Right -->
+    @if (currentPage !== pages.length) {
+        <button class="page-button" (click)="handlePage(1);">
+            <ng-icon class="rotate-180" name="bootstrapChevronLeft"></ng-icon>
+        </button>
+    }
+</div>

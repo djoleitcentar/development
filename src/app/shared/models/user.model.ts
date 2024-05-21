@@ -4,4 +4,5 @@ export type User = {
     email: string;
     role: string;
     edit: boolean;
+    role_id?: number;
 }

@@ -6,7 +6,7 @@
             Create
         </button>
     </div>
-    <div class="w-full bg-white rounded-lg flex flex-col gap-y-4">
+    <div class="w-full bg-white rounded-lg flex flex-col">
         <div class="p-4 flex justify-between items-end">
             <div>
                 <app-form-builder [formFields]="usersHeaderFilterFields" [formGroup]="usersFormGroup"/>
@@ -23,6 +23,10 @@
         </div>
         <div>
             <app-table [tableKeys]="tableKeys" [tableData]="tableData"/>
+        </div>
+        <div class="py-4 flex justify-end items-center bg-gray-100">
+            <app-pagination [pages]="pages"/>
+            <div></div>
         </div>
     </div>
 </section>
