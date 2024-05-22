@@ -6,7 +6,7 @@
         </button>
     }
     <!-- Page 1 -->
-    <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === 1 ? 'rgb(229 231 235)' : 'transparent'}">1</button>
+    <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === 1 ? 'rgb(229 231 235)' : 'transparent'}" (click)="changePage(1)">1</button>
     <!-- Previous 5 pages -->
     @if (currentPage > 5) {
         <button class="w-10 h-10 grid place-items-center" (click)="handlePage(-5);">
@@ -17,14 +17,14 @@
     @for (page of pages; track page) {
         @if (currentPage <= 5) {
             @if (page !== 1 && page <= 5) {
-                <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === page ? 'rgb(229 231 235)' : 'transparent'}">
+                <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === page ? 'rgb(229 231 235)' : 'transparent'}" (click)="changePage(page)">
                     {{ page }}
                 </button>
             }
         }
         @if (currentPage !== 1 && currentPage > 5) {
             @if (page !== 1 && page !== pages.length && page >= currentPage - 2 && page <= currentPage + 2) {
-                <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === page ? 'rgb(229 231 235)' : 'transparent'}">
+                <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === page ? 'rgb(229 231 235)' : 'transparent'}" (click)="changePage(page)">
                     {{ page }}
                 </button>
             }
@@ -37,7 +37,7 @@
         </button>
     }
     <!-- Last page -->
-    <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === pages.length ? 'rgb(229 231 235)' : 'transparent'}">
+    <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === pages.length ? 'rgb(229 231 235)' : 'transparent'}" (click)="changePage(pages.length)">
         {{ pages.length }}
     </button>
     <!-- Chevron Right -->

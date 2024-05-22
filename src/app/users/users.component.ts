@@ -86,12 +86,41 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  onSearch() {
+  onSearch(currentPage?: number) {
+    if (currentPage) {
+      this.usersPaginationFormGroup.value.page = currentPage;
+    }
     let query = CustomUtilsService.createQueryString({
       ...this.usersFormGroup.value,
       ...this.usersPaginationFormGroup.value,
     });
     this.usersService.getAllUsers(query).subscribe({
+      next: (response) => {
+        this.tableDataResponse = response;
+        this.tableData = this.tableDataResponse.data;
+        this.pages = Array.from(
+          { length: this.tableDataResponse?.pagination.total_pages },
+          (_, i) => i + 1
+        );
+        for (let data of this.tableData) {
+          switch (data.role_id) {
+            case 1:
+              data.role = 'Owner';
+              break;
+            case 2:
+              data.role = 'Administrator';
+              break;
+            case 3:
+              data.role = 'Developer';
+              break;
+          }
+        }
+      },
+    });
+  }
+
+  resetAll() {
+    this.usersService.getAllUsers('').subscribe({
       next: (response) => {
         this.tableDataResponse = response;
         this.tableData = this.tableDataResponse.data;

@@ -12,7 +12,7 @@
                 <app-form-builder [formFields]="usersHeaderFilterFields" [formGroup]="usersFormGroup"/>
             </div>
             <div class="flex justify-between gap-x-4">
-                <button class="px-3 py-2 flex items-center bg-blue-950 text-white text-base font-semibold rounded-lg">
+                <button class="px-3 py-2 flex items-center bg-blue-950 text-white text-base font-semibold rounded-lg" (click)="resetAll()">
                     <ng-icon name="bootstrapArrowClockwise"></ng-icon>
                 </button>
                 <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg" (click)="onSearch()">
@@ -25,7 +25,7 @@
             <app-table [tableKeys]="tableKeys" [tableData]="tableData"/>
         </div>
         <div class="py-4 flex justify-end items-center gap-x-8 bg-gray-100">
-            <app-pagination [pages]="pages"/>
+            <app-pagination [pages]="pages" (currentPageEmitter)="onSearch($event)"/>
             <div class="w-72">
                 <app-form-builder [formFields]="usersPaginationFilterFields" [formGroup]="usersPaginationFormGroup" />
             </div>
