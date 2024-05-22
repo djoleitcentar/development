@@ -1,11 +1,13 @@
 import { NgStyle } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   bootstrapChevronLeft,
   bootstrapChevronDoubleLeft,
   bootstrapThreeDots,
 } from '@ng-icons/bootstrap-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { UsersService } from '../../services/users.service';
+import { FormBuilderService } from '../../services/form-builder.service';
 
 @Component({
   selector: 'app-pagination',
@@ -24,6 +26,8 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 export class PaginationComponent {
   @Input() pages: number[];
   currentPage = 1;
+
+  constructor(private usersService: UsersService) {}
 
   handlePage(num: number) {
     this.currentPage += num;

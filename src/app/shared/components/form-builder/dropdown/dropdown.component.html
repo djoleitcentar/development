@@ -5,12 +5,12 @@
         {{ field.label }}
     </label>
     <select
-        class="w-72 mt-2 px-5 py-3 bg-white border border-slate-100 outline-none rounded-lg"
+        class="mt-2 px-5 py-3 bg-white border border-slate-100 outline-none rounded-lg"
         [ngClass]="field.colSize"
         [formControlName]="field.formControlName"
     >
         @for (option of field.options; track option) {
-            <option [value]="option">{{ option }}</option>
-        }
+                <option [value]="option.value">{{ option.label }}</option>
+            }
     </select>
 </div>

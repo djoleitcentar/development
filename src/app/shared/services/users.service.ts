@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  getAllUsers() {
-    return this.http.get(`${environment.apiUrl}/api/users?per_page=5`);
+  getAllUsers(query: string) {
+    return this.http.get(`${environment.apiUrl}/api/users?${query}`);
   }
 }

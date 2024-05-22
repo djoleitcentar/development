@@ -29,16 +29,9 @@
                 </button>
             }
         }
-        @if (currentPage > pages.length - 3) {
-            @if (page <= currentPage - 1 && page >= currentPage - 3) {
-                <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === page ? 'rgb(229 231 235)' : 'transparent'}">
-                    {{ page }}
-                </button>
-            }
-        }
     }
     <!-- Next 5 pages -->
-    @if (currentPage < pages.length -3) {
+    @if (currentPage < pages.length - 3) {
         <button class="w-10 h-10 grid place-items-center" (click)="handlePage(5);">
             <ng-icon name="bootstrapThreeDots"></ng-icon>
         </button>
