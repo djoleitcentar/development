@@ -1,7 +1,7 @@
 <section class="relative w-full h-screen mt-12 mx-12 flex flex-col justify-start items-center gap-y-6">
     <div class="w-full flex justify-between items-center">
         <h1 class="text-xl">Users</h1>
-        <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg" (click)="createUserModal()">
+        <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg transition-all ease-in duration-150 hover:bg-blue-900" (click)="createUserModal()">
             <ng-icon name="bootstrapPlusCircle"></ng-icon>
             Create
         </button>
@@ -12,10 +12,10 @@
                 <app-form-builder [formFields]="usersHeaderFilterFields" [formGroup]="usersFormGroup"/>
             </div>
             <div class="flex justify-between gap-x-4">
-                <button class="px-3 py-2 flex items-center bg-blue-950 text-white text-base font-semibold rounded-lg" (click)="resetAll()">
+                <button class="px-3 py-2 flex items-center bg-blue-950 text-white text-base font-semibold rounded-lg transition-all ease-in duration-150 hover:bg-blue-900" (click)="resetAll()">
                     <ng-icon name="bootstrapArrowClockwise"></ng-icon>
                 </button>
-                <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg" (click)="onSearch()">
+                <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg transition-all ease-in duration-150 hover:bg-blue-900" (click)="onSearch()">
                     <ng-icon name="bootstrapSearch"></ng-icon>
                     Search
                 </button>
