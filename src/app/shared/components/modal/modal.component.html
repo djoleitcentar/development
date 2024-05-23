@@ -1,0 +1,26 @@
+@if (showModal || showModalCreate) {
+    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" (click)="changeEditingUser()"></div>
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div class="relative w-96 h-full p-2 transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    <div class="mx-5 flex justify-between items-center">
+                        <p class="pt-4 text-sm font-medium text-slate-800">{{ eventName }}</p>
+                        <button class="flex items-center" (click)="changeEditingUser()">
+                            <ng-icon class="text-gray-500" name="bootstrapXLg" size="1.2rem"></ng-icon>
+                        </button>
+                    </div>
+                    <div class="mt-1 mx-6 flex justify-end items-center">
+                        <button class="px-4 py-2 flex items-center gap-x-2 bg-blue-950 text-white text-xs rounded-lg hover:bg-blue-900" (click)="onSave();">
+                            <ng-icon name="bootstrapFloppy" size="0.8rem"></ng-icon>
+                            Save
+                        </button>
+                    </div>
+                    <div class="bg-white px-4">
+                        <ng-content></ng-content>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+}

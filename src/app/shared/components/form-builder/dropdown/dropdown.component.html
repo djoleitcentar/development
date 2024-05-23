@@ -1,11 +1,12 @@
 <div class="flex flex-col" [ngClass]="field.colSize">
     <label
+        class="text-xs"
         [for]="field.formControlName"
     >
         {{ field.label }}
     </label>
     <select
-        class="mt-2 px-5 py-3 bg-white border border-slate-100 outline-none rounded-lg"
+        class="h-8 mt-4 px-5 py-1 bg-white border border-slate-100 outline-none rounded-lg"
         [ngClass]="field.colSize"
         [formControlName]="field.formControlName"
     >

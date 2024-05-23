@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import {
   bootstrapPlusCircle,
   bootstrapArrowClockwise,
@@ -15,15 +15,21 @@ import { Key, User } from '../shared/models';
 import { usersTableKeys } from '../shared/data/usersTableKeys';
 import { PaginationComponent } from '../shared/components/pagination/pagination.component';
 import { CustomUtilsService } from '../shared/services/custom-utils.service';
+import { NgClass, NgStyle } from '@angular/common';
+import { UsersModalComponent } from '../shared/components/modal/modal.component';
+import { updateUserForm } from '../shared/data/updateUserForm';
 
 @Component({
   selector: 'app-users',
   standalone: true,
   imports: [
+    NgStyle,
+    NgClass,
     NgIconComponent,
     FormBuilderComponent,
     TableComponent,
     PaginationComponent,
+    UsersModalComponent,
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
@@ -38,12 +44,19 @@ import { CustomUtilsService } from '../shared/services/custom-utils.service';
 export class UsersComponent implements OnInit {
   usersHeaderFilterFields = usersHeaderFilter;
   usersPaginationFilterFields = usersPaginationFilter;
+  createUserFormFields = updateUserForm;
+  updateUserFormFields = updateUserForm;
   usersFormGroup;
   usersPaginationFormGroup;
+  updateUsersFormGroup;
+  createUsersFormGroup;
   tableDataResponse?;
   tableData: User[];
   tableKeys: Key[] = usersTableKeys;
   pages: number[];
+  showModal: boolean = false;
+  showModalCreate: boolean = false;
+  eventObject;
 
   constructor(
     private formBuilderService: FormBuilderService,
@@ -56,6 +69,12 @@ export class UsersComponent implements OnInit {
     );
     this.usersPaginationFormGroup = this.formBuilderService.createForm(
       this.usersPaginationFilterFields
+    );
+    this.updateUsersFormGroup = this.formBuilderService.createForm(
+      this.updateUserFormFields
+    );
+    this.createUsersFormGroup = this.formBuilderService.createForm(
+      this.updateUserFormFields
     );
     let query = CustomUtilsService.createQueryString({
       ...this.usersFormGroup.value,
@@ -141,6 +160,54 @@ export class UsersComponent implements OnInit {
               break;
           }
         }
+      },
+    });
+  }
+
+  createUserModal() {
+    this.showModalCreate = true;
+  }
+
+  createUser() {
+    this.showModalCreate = false;
+    this.usersService.createUser(this.createUsersFormGroup.value).subscribe({
+      next: (response) => {
+        this.onSearch();
+        console.log(response);
+      },
+    });
+  }
+
+  updateUserModal(eventObject: { event: string; id: string }) {
+    this.showModal = true;
+    this.eventObject = eventObject;
+    this.tableData.forEach((item) => {
+      item.id === this.eventObject.id
+        ? this.updateUsersFormGroup.patchValue({
+            name: item.name,
+            email: item.email,
+            role_id: item.role_id,
+          })
+        : null;
+    });
+  }
+
+  updateUser() {
+    this.showModal = false;
+    this.usersService
+      .updateUser(this.eventObject.id, this.updateUsersFormGroup.value)
+      .subscribe({
+        next: (response) => {
+          this.onSearch();
+          console.log(response);
+        },
+      });
+  }
+
+  deleteUser(eventObject: { event: string; id: string }) {
+    this.usersService.deleteUser(eventObject.id).subscribe({
+      next: (response) => {
+        this.onSearch();
       },
     });
   }

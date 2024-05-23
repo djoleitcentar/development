@@ -15,10 +15,10 @@
                 }
                 <td class="px-8 py-4 flex gap-x-2 border-b text-gray-800 border-gray-200 text-left">
                     <div>
-                        <button class="px-2 py-2 flex border border-slate-300 rounded-lg" (click)="handleEdit(row)"><ng-icon name="bootstrapPen"></ng-icon></button>
+                        <button class="px-2 py-2 flex border border-slate-300 rounded-lg" (click)="editOrDelete('edit', row.id)"><ng-icon name="bootstrapPen"></ng-icon></button>
                     </div>
                     <div>
-                        <button class="px-2 py-2 flex border border-slate-300 rounded-lg" (click)="handleEdit(row)"><ng-icon name="bootstrapXLg"></ng-icon></button>
+                        <button class="px-2 py-2 flex border border-slate-300 rounded-lg" (click)="editOrDelete('delete', row.id)"><ng-icon name="bootstrapXLg"></ng-icon></button>
                     </div>
                 </td>
             </tr>

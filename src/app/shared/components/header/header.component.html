@@ -1,7 +1,7 @@
 <section class="px-6 w-full h-14 flex justify-end items-center gap-x-4 bg-white">
     <div class="dropdown relative">
         <button class="text-sm">Super Admin</button>
-        <div class="w-32 p-4 absolute translate-y-6 bg-white" [ngClass]="isDropdownOpen ? 'visible' : 'hidden'">
+        <div class="w-32 p-4 absolute translate-y-6 bg-white z-30" [ngClass]="isDropdownOpen ? 'visible' : 'hidden'">
             <ul class="flex flex-col gap-y-4">
                 <li>
                     <button>My profile</button>

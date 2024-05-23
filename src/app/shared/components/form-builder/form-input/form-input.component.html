@@ -1,6 +1,6 @@
-<div [ngClass]="field.colSize">
+<div class="mt-4" [ngClass]="field.colSize">
     <label
-        class="text-sm font-normal"
+        class="text-xs font-normal"
         [for]="field.formControlName"
     >
         {{ field.label }}
@@ -8,7 +8,7 @@
     <div class="grid justify-items-center items-center" [ngClass]="field.textBefore && field.textAfter ? 'grid-cols-3' : 'grid-cols-1'">
         <p>{{ field.textBefore }}</p>
         <input
-            class="w-full mt-2 px-5 py-2 bg-white border border-slate-100 outline-none rounded-lg"
+            class="w-full h-8 px-5 py-1 bg-white border border-slate-100 outline-none rounded-lg"
             [type]="field.type"
             [placeholder]="field.placeholder"
             [formControlName]="field.formControlName"

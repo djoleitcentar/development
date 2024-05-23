@@ -31,17 +31,17 @@
         }
     }
     <!-- Next 5 pages -->
-    @if (currentPage < pages.length - 3) {
+    @if (currentPage < pages?.length - 3) {
         <button class="w-10 h-10 grid place-items-center" (click)="handlePage(5);">
             <ng-icon name="bootstrapThreeDots"></ng-icon>
         </button>
     }
     <!-- Last page -->
-    <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === pages.length ? 'rgb(229 231 235)' : 'transparent'}" (click)="changePage(pages.length)">
-        {{ pages.length }}
+    <button class="page-button" [ngStyle]="{'backgroundColor': currentPage === pages?.length ? 'rgb(229 231 235)' : 'transparent'}" (click)="changePage(pages?.length)">
+        {{ pages?.length }}
     </button>
     <!-- Chevron Right -->
-    @if (currentPage !== pages.length) {
+    @if (currentPage !== pages?.length) {
         <button class="page-button" (click)="handlePage(1);">
             <ng-icon class="rotate-180" name="bootstrapChevronLeft"></ng-icon>
         </button>
