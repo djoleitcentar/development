@@ -1,0 +1,40 @@
+<section class="relative h-screen mt-24 mx-12 flex flex-col justify-start items-center gap-y-6">
+    <div class="w-full flex justify-between items-center">
+        <h1 class="text-xl">Projects</h1>
+        <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg transition-all ease-in duration-150 hover:bg-blue-900">
+            <ng-icon name="bootstrapPlusCircle"></ng-icon>
+            Create
+        </button>
+    </div>
+    <div class="w-full bg-white rounded-lg flex flex-col">
+        <div class="p-4 flex justify-between items-end">
+            <div>
+                <!-- form builder -->
+                <app-form-builder [formFields]="projectsHeaderFilterFields" [formGroup]="projectsHeaderFilter"/>
+            </div>
+            <div class="flex justify-between gap-x-4">
+                <button class="px-3 py-2 flex items-center bg-blue-950 text-white text-base font-semibold rounded-lg transition-all ease-in duration-150 hover:bg-blue-900" (click)="resetAll()">
+                    <ng-icon name="bootstrapArrowClockwise"></ng-icon>
+                </button>
+                <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg transition-all ease-in duration-150 hover:bg-blue-900" (click)="onSearch()">
+                    <ng-icon name="bootstrapSearch"></ng-icon>
+                    Search
+                </button>
+            </div>
+        </div>
+        <div>
+            <!-- table -->
+            <app-table [tableKeys]="tableKeys" [tableData]="tableData"/>
+        </div>
+        <div class="px-4 py-4 flex justify-end items-center gap-x-8 bg-gray-100">
+            <!-- pagination -->
+            <app-pagination [pages]="pages" (currentPageEmitter)="onSearch($event)"/>
+            <div class="flex justify-center items-center gap-x-4">
+                <!-- input -->
+                Go to
+                <input #goToPage class="w-12 h-6 outline-none rounded-lg" type="text" (keyup)="onSearch(goToPage.value); changePage(goToPage.value)">
+                Page
+            </div>
+        </div>
+    </div>
+</section>

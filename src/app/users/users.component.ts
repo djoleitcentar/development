@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   bootstrapPlusCircle,
   bootstrapArrowClockwise,
@@ -18,6 +18,8 @@ import { CustomUtilsService } from '../shared/services/custom-utils.service';
 import { NgClass, NgStyle } from '@angular/common';
 import { UsersModalComponent } from '../shared/components/modal/modal.component';
 import { updateUserForm } from '../shared/data/updateUserForm';
+import { UserRole } from '../shared/enums/user-role.enum';
+import { CurrentPageService } from '../shared/services/current-page.service';
 
 @Component({
   selector: 'app-users',
@@ -60,7 +62,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private formBuilderService: FormBuilderService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private currentPageService: CurrentPageService
   ) {}
 
   ngOnInit() {
@@ -76,33 +79,7 @@ export class UsersComponent implements OnInit {
     this.createUsersFormGroup = this.formBuilderService.createForm(
       this.updateUserFormFields
     );
-    let query = CustomUtilsService.createQueryString({
-      ...this.usersFormGroup.value,
-      ...this.usersPaginationFormGroup.value,
-    });
-    this.usersService.getAllUsers(query).subscribe({
-      next: (response) => {
-        this.tableDataResponse = response;
-        this.tableData = this.tableDataResponse.data;
-        this.pages = Array.from(
-          { length: this.tableDataResponse?.pagination.total_pages },
-          (_, i) => i + 1
-        );
-        for (let data of this.tableData) {
-          switch (data.role_id) {
-            case 1:
-              data.role = 'Owner';
-              break;
-            case 2:
-              data.role = 'Administrator';
-              break;
-            case 3:
-              data.role = 'Developer';
-              break;
-          }
-        }
-      },
-    });
+    this.onSearch();
   }
 
   onSearch(currentPage?: number) {
@@ -116,66 +93,47 @@ export class UsersComponent implements OnInit {
     this.usersService.getAllUsers(query).subscribe({
       next: (response) => {
         this.tableDataResponse = response;
-        this.tableData = this.tableDataResponse.data;
+        this.tableData = this.tableDataResponse.data.map((singleUser) => {
+          return {
+            ...singleUser,
+            role:
+              singleUser.role_id === UserRole.ADMIN
+                ? 'Administrator'
+                : 'Developer',
+          };
+        });
+
         this.pages = Array.from(
           { length: this.tableDataResponse?.pagination.total_pages },
           (_, i) => i + 1
         );
-        for (let data of this.tableData) {
-          switch (data.role_id) {
-            case 1:
-              data.role = 'Owner';
-              break;
-            case 2:
-              data.role = 'Administrator';
-              break;
-            case 3:
-              data.role = 'Developer';
-              break;
-          }
-        }
       },
     });
   }
 
   resetAll() {
-    this.usersService.getAllUsers('').subscribe({
-      next: (response) => {
-        this.tableDataResponse = response;
-        this.tableData = this.tableDataResponse.data;
-        this.pages = Array.from(
-          { length: this.tableDataResponse?.pagination.total_pages },
-          (_, i) => i + 1
-        );
-        for (let data of this.tableData) {
-          switch (data.role_id) {
-            case 1:
-              data.role = 'Owner';
-              break;
-            case 2:
-              data.role = 'Administrator';
-              break;
-            case 3:
-              data.role = 'Developer';
-              break;
-          }
-        }
-      },
-    });
-  }
-
-  createUserModal() {
-    this.showModalCreate = true;
+    this.usersFormGroup.reset();
+    this.usersPaginationFormGroup.reset();
+    this.onSearch();
+    this.currentPageService.updateCurrentPage(1);
   }
 
   createUser() {
     this.showModalCreate = false;
     this.usersService.createUser(this.createUsersFormGroup.value).subscribe({
-      next: (response) => {
+      next: (response: { message: string }) => {
         this.onSearch();
-        console.log(response);
+        alert(response.message);
+      },
+      error: (error) => {
+        alert(error.error.message);
       },
     });
+  }
+
+  createUserClosed(event: boolean) {
+    this.showModalCreate = event;
+    this.createUsersFormGroup.reset();
   }
 
   updateUserModal(eventObject: { event: string; id: string }) {
@@ -197,18 +155,27 @@ export class UsersComponent implements OnInit {
     this.usersService
       .updateUser(this.eventObject.id, this.updateUsersFormGroup.value)
       .subscribe({
-        next: (response) => {
+        next: (response: { message: string }) => {
           this.onSearch();
-          console.log(response);
+          alert(response.message);
+        },
+        error: (error) => {
+          alert(error.error.message);
         },
       });
   }
 
   deleteUser(eventObject: { event: string; id: string }) {
-    this.usersService.deleteUser(eventObject.id).subscribe({
-      next: (response) => {
-        this.onSearch();
-      },
-    });
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      this.usersService.deleteUser(eventObject.id).subscribe({
+        next: (response: { message: string }) => {
+          this.onSearch();
+          alert(response.message);
+        },
+        error: (error) => {
+          alert(error.error.message);
+        },
+      });
+    }
   }
 }

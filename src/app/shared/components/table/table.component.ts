@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Key, User } from '../../models/index';
 import { CommonModule } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { bootstrapPen, bootstrapXLg } from '@ng-icons/bootstrap-icons';
+import { bootstrapPen } from '@ng-icons/bootstrap-icons';
+import { ionTrashBinOutline } from '@ng-icons/ionicons';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +13,7 @@ import { bootstrapPen, bootstrapXLg } from '@ng-icons/bootstrap-icons';
   viewProviders: [
     provideIcons({
       bootstrapPen,
-      bootstrapXLg,
+      ionTrashBinOutline,
     }),
   ],
 })

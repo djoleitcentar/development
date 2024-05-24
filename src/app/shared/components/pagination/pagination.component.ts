@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   bootstrapChevronLeft,
   bootstrapChevronDoubleLeft,
@@ -7,6 +7,7 @@ import {
 } from '@ng-icons/bootstrap-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { UsersService } from '../../services/users.service';
+import { CurrentPageService } from '../../services/current-page.service';
 
 @Component({
   selector: 'app-pagination',
@@ -22,12 +23,18 @@ import { UsersService } from '../../services/users.service';
     }),
   ],
 })
-export class PaginationComponent {
+export class PaginationComponent implements OnInit {
   @Input() pages: number[];
   @Output() currentPageEmitter = new EventEmitter();
   currentPage = 1;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private currentPageService: CurrentPageService) {}
+
+  ngOnInit() {
+    this.currentPageService.currentPage$.subscribe((data) => {
+      this.currentPage = data;
+    });
+  }
 
   handlePage(num: number) {
     this.currentPage += num;

@@ -1,7 +1,7 @@
-<section class="relative w-full h-screen mt-12 mx-12 flex flex-col justify-start items-center gap-y-6">
+<section class="relative w-full h-screen mt-24 mx-12 flex flex-col justify-start items-center gap-y-6">
     <div class="w-full flex justify-between items-center">
         <h1 class="text-xl">Users</h1>
-        <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg transition-all ease-in duration-150 hover:bg-blue-900" (click)="createUserModal()">
+        <button class="px-5 py-2 flex justify-between items-center gap-x-2 bg-blue-950 text-white text-base font-semibold rounded-lg transition-all ease-in duration-150 hover:bg-blue-900" (click)="this.showModalCreate = true;">
             <ng-icon name="bootstrapPlusCircle"></ng-icon>
             Create
         </button>
@@ -33,7 +33,7 @@
     </div>
 </section>
 <!-- Create User -->
-<app-modal [showModalCreate]="showModalCreate" eventName="Create user" (onClose)="showModalCreate = $event" (updateAndCreateUserEmitter)="createUser();">
+<app-modal [showModalCreate]="showModalCreate" eventName="Create user" (onClose)="createUserClosed($event)" (updateAndCreateUserEmitter)="createUser();">
     <app-form-builder [formFields]="createUserFormFields" [formGroup]="createUsersFormGroup"/>
 </app-modal>
 <!-- Update user -->
