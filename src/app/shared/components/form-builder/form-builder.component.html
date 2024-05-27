@@ -1,17 +1,15 @@
 <form>
-    <div class="flex flex-col">
-        <div class="grid grid-cols-12 items-center gap-x-8" [formGroup]="formGroup">
-            @for (field of formFields; track field) {
-                @if (field.ctrlType === "input") {
-                    <app-form-input [field]="field"/>
-                }
-                @if (field.ctrlType === "dropdown") {
-                    <app-dropdown [field]="field" />
-                }
-                @if (field.ctrlType === "textarea") {
-                    <app-textarea [field]="field"/>
-                }
+    <div class="grid grid-cols-12 items-center gap-x-8 gap-y-8" [formGroup]="formGroup">
+        @for (field of formFields; track field) {
+            @if (field.ctrlType === "input") {
+                <app-form-input [field]="field"/>
             }
-        </div>
+            @if (field.ctrlType === "dropdown") {
+                <app-dropdown [field]="field" />
+            }
+            @if (field.ctrlType === "textarea") {
+                <app-textarea [field]="field"/>
+            }
+        }
     </div>
 </form>

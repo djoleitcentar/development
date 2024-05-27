@@ -14,12 +14,14 @@
                     <td class="px-8 py-4 border-b text-gray-500 border-gray-200 text-left">{{ row[item.key] }}</td>
                 }
                 <td class="px-8 py-4 flex gap-x-2 border-b text-gray-800 border-gray-200 text-left">
-                    <div class="transition-all ease-in duration-150 hover:scale-110">
+                    <!-- <div class="transition-all ease-in duration-150 hover:scale-110">
                         <button class="px-2 py-2 flex border border-slate-300 rounded-lg" (click)="editOrDelete('edit', row.id)"><ng-icon name="bootstrapPen"></ng-icon></button>
-                    </div>
-                    <div class="transition-all ease-in duration-150 hover:scale-110">
+                    </div> -->
+                    <app-update-project [rowId]="row.id"/>
+                    <app-delete-project [rowId]="row.id"/>
+                    <!-- <div class="transition-all ease-in duration-150 hover:scale-110">
                         <button class="px-2 py-2 flex border border-slate-300 rounded-lg" (click)="editOrDelete('delete', row.id)"><ng-icon name="ionTrashBinOutline"></ng-icon></button>
-                    </div>
+                    </div> -->
                 </td>
             </tr>
         }

@@ -14,27 +14,34 @@ import { AuthService } from '../shared/services/auth.service';
   standalone: true,
   imports: [NgIconComponent, FormBuilderComponent],
   templateUrl: './login.component.html',
-  viewProviders: [provideIcons({
-    bootstrapBoxArrowInRight
-  })]
+  viewProviders: [
+    provideIcons({
+      bootstrapBoxArrowInRight,
+    }),
+  ],
 })
 export class LoginComponent implements OnInit {
   formFields: Field[] = loginFieldsData;
   formGroup;
 
-  constructor(private loginService: LoginService, private formBuilderService: FormBuilderService, private authService: AuthService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private formBuilderService: FormBuilderService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.formGroup = this.formBuilderService.createForm(this.formFields)
+    this.formGroup = this.formBuilderService.createForm(this.formFields);
   }
 
   handleSubmit() {
     this.loginService.login(this.formGroup.value).subscribe({
-      next: response => {
+      next: (response) => {
         localStorage.setItem('user', JSON.stringify(response));
         this.authService.isLoggedIn$.next(true);
         this.router.navigate(['/homelayout/home']);
-      }
-  });
+      },
+    });
   }
 }

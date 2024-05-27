@@ -3,18 +3,20 @@ import { BehaviorSubject } from 'rxjs';
 
 type Credentials = {
   token: string;
-}
+};
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private _credentialsSubject: BehaviorSubject<Credentials>;
-  public isLoggedIn$  = new BehaviorSubject<boolean>(false);
+  public isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
   constructor() {
     const storedCredentials = this.getCredentialsFromStorage();
-    this._credentialsSubject = new BehaviorSubject<Credentials>(storedCredentials);
+    this._credentialsSubject = new BehaviorSubject<Credentials>(
+      storedCredentials
+    );
   }
 
   private getCredentialsFromStorage(): Credentials {

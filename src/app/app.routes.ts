@@ -7,6 +7,7 @@ import { HomelayoutComponent } from './homelayout/homelayout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { UsersComponent } from './users/users.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { UpdatePageComponent } from './projects/update-project/update-page/update-page.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'homelayout' },
@@ -19,9 +20,16 @@ export const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'form', component: FormComponent },
       { path: 'messages', component: SidebarComponent },
-      { path: 'projects', component: SidebarComponent },
+      {
+        path: 'projects',
+        component: SidebarComponent,
+      },
       { path: 'users', component: UsersComponent },
-      { path: 'goals', component: ProjectsComponent },
+      {
+        path: 'goals',
+        component: ProjectsComponent,
+      },
+      { path: 'goals/edit/:id', component: UpdatePageComponent },
       { path: 'notifications', component: SidebarComponent },
       { path: 'settings', component: SidebarComponent },
     ],

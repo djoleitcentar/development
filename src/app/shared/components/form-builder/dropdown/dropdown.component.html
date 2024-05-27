@@ -6,12 +6,19 @@
         {{ field.label }}
     </label>
     <select
-        class="h-8 mt-4 px-5 py-1 bg-white border border-slate-100 outline-none rounded-lg"
+        class="h-8 mt-2 px-5 py-1 bg-white border border-slate-100 outline-none rounded-lg"
         [ngClass]="field.colSize"
         [formControlName]="field.formControlName"
     >
+    @if (field.colors) {
         @for (option of field.options; track option) {
-                <option [value]="option.value">{{ option.label }}</option>
+                <div [value]="option.value" [ngStyle]="{backgroundColor: option}">
+                </div>
             }
+    } @else {
+        @for (option of field.options; track option) {
+            <option [value]="option.value">{{ option.label }}</option>
+        }
+    }
     </select>
 </div>

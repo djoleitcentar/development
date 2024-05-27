@@ -8,6 +8,8 @@ export type Field = {
   value: string;
   values?: [];
   options?: { label: string; value: number }[];
+  row?: number;
+  colors?: string;
   textBefore?: string;
   textAfter?: string;
 };

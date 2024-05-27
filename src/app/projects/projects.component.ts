@@ -41,6 +41,8 @@ export class ProjectsComponent {
   tableData: User[];
   tableKeys: Key[] = projectsTableKeys;
   pages: number[];
+  updateProjectId: number;
+  deleteProjectId: number;
   @ViewChild('goToPage') goToPage: ElementRef<HTMLInputElement>;
 
   constructor(

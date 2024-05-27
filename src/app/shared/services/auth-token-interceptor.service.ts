@@ -21,7 +21,7 @@ export class AuthTokenInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let token = this.authService.getCredentials().token;
+    let token = this.authService.getCredentials()?.token;
 
     if (token && req.url.startsWith(apiUrl)) {
       req = req.clone({
