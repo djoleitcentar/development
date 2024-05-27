@@ -29,6 +29,7 @@ export class TableComponent {
   @Input() tableKeys: Key[];
   @Output() onEdit = new EventEmitter<User>();
   @Output() editOrDeleteUpdate = new EventEmitter();
+  @Output() informProjectsAboutDelete = new EventEmitter();
 
   handleEdit(rowData: User) {
     this.onEdit.emit(rowData);
@@ -36,5 +37,9 @@ export class TableComponent {
 
   editOrDelete(event: string, id: string) {
     this.editOrDeleteUpdate.emit({ event, id });
+  }
+
+  getAllProjectsAfterDelete() {
+    this.informProjectsAboutDelete.emit();
   }
 }

@@ -15,6 +15,7 @@ import { ProjectsService } from '../shared/services/projects.service';
 import { PaginationComponent } from '../shared/components/pagination/pagination.component';
 import { CustomUtilsService } from '../shared/services/custom-utils.service';
 import { CurrentPageService } from '../shared/services/current-page.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -46,6 +47,7 @@ export class ProjectsComponent {
   @ViewChild('goToPage') goToPage: ElementRef<HTMLInputElement>;
 
   constructor(
+    private router: Router,
     private formBuilderService: FormBuilderService,
     private projectsService: ProjectsService,
     private currentPageService: CurrentPageService
@@ -88,5 +90,9 @@ export class ProjectsComponent {
 
   changePage(currentPage: number) {
     this.currentPageService.updateCurrentPage(Number(currentPage));
+  }
+
+  createProject() {
+    this.router.navigate(['homelayout/goals/create']);
   }
 }

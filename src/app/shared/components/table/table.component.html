@@ -18,7 +18,7 @@
                         <button class="px-2 py-2 flex border border-slate-300 rounded-lg" (click)="editOrDelete('edit', row.id)"><ng-icon name="bootstrapPen"></ng-icon></button>
                     </div> -->
                     <app-update-project [rowId]="row.id"/>
-                    <app-delete-project [rowId]="row.id"/>
+                    <app-delete-project [rowId]="row.id" (getAllProjectsAfterDelete)="getAllProjectsAfterDelete()"/>
                     <!-- <div class="transition-all ease-in duration-150 hover:scale-110">
                         <button class="px-2 py-2 flex border border-slate-300 rounded-lg" (click)="editOrDelete('delete', row.id)"><ng-icon name="ionTrashBinOutline"></ng-icon></button>
                     </div> -->

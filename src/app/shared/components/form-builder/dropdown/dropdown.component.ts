@@ -6,6 +6,7 @@ import {
 } from '@angular/forms';
 import { Field } from '../../../models/index';
 import { NgClass, NgStyle } from '@angular/common';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @Component({
   selector: 'app-dropdown',

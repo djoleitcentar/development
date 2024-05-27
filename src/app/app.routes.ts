@@ -8,6 +8,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { UsersComponent } from './users/users.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { UpdatePageComponent } from './projects/update-project/update-page/update-page.component';
+import { CreateProjectComponent } from './projects/create-project/create-project.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'homelayout' },
@@ -30,6 +31,7 @@ export const routes: Routes = [
         component: ProjectsComponent,
       },
       { path: 'goals/edit/:id', component: UpdatePageComponent },
+      { path: 'goals/create', component: CreateProjectComponent },
       { path: 'notifications', component: SidebarComponent },
       { path: 'settings', component: SidebarComponent },
     ],

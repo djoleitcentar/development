@@ -10,15 +10,8 @@
         [ngClass]="field.colSize"
         [formControlName]="field.formControlName"
     >
-    @if (field.colors) {
         @for (option of field.options; track option) {
-                <div [value]="option.value" [ngStyle]="{backgroundColor: option}">
-                </div>
-            }
-    } @else {
-        @for (option of field.options; track option) {
-            <option [value]="option.value">{{ option.label }}</option>
+            <option [value]="option.value" >{{ option.label }}</option>
         }
-    }
     </select>
 </div>
