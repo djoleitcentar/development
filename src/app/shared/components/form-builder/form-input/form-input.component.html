@@ -1,5 +1,5 @@
 <div class="flex flex-col" [ngClass]="field.colSize">
-    <label
+    <!-- <label
         class="text-xs font-normal"
         [for]="field.formControlName"
     >
@@ -10,5 +10,13 @@
             [type]="field.type"
             [placeholder]="field.placeholder"
             [formControlName]="field.formControlName"
-        />
+        /> -->
+        <form nz-form>
+            <nz-form-item>
+            <nz-form-label [nzSpan]="6" [nzFor]="field.formControlName">E-mail</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+            <input nz-input [name]="field.formControlName" [type]="field.ctrlType" [id]="field.formControlName" />
+            </nz-form-control>
+        </nz-form-item>
+        </form>
 </div>

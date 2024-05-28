@@ -1,5 +1,5 @@
 <div class="flex flex-col" [ngClass]="field.colSize">
-    <label
+    <!-- <label
         class="text-xs"
         [for]="field.formControlName"
     >
@@ -11,7 +11,22 @@
         [formControlName]="field.formControlName"
     >
         @for (option of field.options; track option) {
-            <option [value]="option.value" >{{ option.label }}</option>
+            <option [value]="option.value">{{ option.label }}</option>
         }
-    </select>
+    </select> -->
+    <!-- <mat-form-field matFormFieldControl>
+        <mat-label>{{ field.label }}</mat-label>
+        <mat-select
+            matNativeControl
+            [formControlName]="field.formControlName">
+                @for (option of field.options; track option) {
+                    <mat-option [value]="option.value">{{ option.label }}</mat-option>
+                }
+        </mat-select>
+    </mat-form-field> -->
+    <nz-select nzShowSearch [nzPlaceHolder]="field.options[0].label">
+        @for (option of field.options; track option) {
+            <nz-option [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        }
+    </nz-select>
 </div>
