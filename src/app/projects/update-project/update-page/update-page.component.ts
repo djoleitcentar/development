@@ -73,6 +73,7 @@ export class UpdatePageComponent implements OnInit {
       next: (response) => {
         this.editingProjectData = response;
         this.editingProject = this.editingProjectData.data;
+        projectFilterFields[2].value = this.editingProject.color;
         this.editingProjectFilters.patchValue({
           title: this.editingProject.title,
           client_id: this.editingProject.client.id,

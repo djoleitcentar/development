@@ -1,22 +1,10 @@
 <div class="flex flex-col" [ngClass]="field.colSize">
-    <!-- <label
-        class="text-xs font-normal"
-        [for]="field.formControlName"
-    >
-        {{ field.label }}
-    </label>
-        <input
-            class="h-8 mt-2 px-5 py-1 bg-white border border-slate-100 outline-none rounded-lg"
-            [type]="field.type"
-            [placeholder]="field.placeholder"
-            [formControlName]="field.formControlName"
-        /> -->
-        <form nz-form>
-            <nz-form-item>
-            <nz-form-label [nzSpan]="6" [nzFor]="field.formControlName">E-mail</nz-form-label>
-            <nz-form-control [nzSpan]="14">
-            <input nz-input [name]="field.formControlName" [type]="field.ctrlType" [id]="field.formControlName" />
+    <form nz-form>
+        <nz-form-item class="flex flex-col justify-start">
+            <nz-form-label class="text-xs font-normal" [nzSpan]="24" [nzFor]="field.formControlName">{{ field.label }}</nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <input class="h-8 px-5 py-1 bg-white border border-slate-100 outline-none rounded-lg" nz-input [name]="field.formControlName" [type]="field.type" [id]="field.formControlName" [formControlName]="field.formControlName" />
             </nz-form-control>
         </nz-form-item>
-        </form>
+    </form>
 </div>

@@ -9,6 +9,7 @@ import { NgClass, NgStyle } from '@angular/common';
 // import { MatSelectModule } from '@angular/material/select';
 // import { MatFormFieldModule } from '@angular/material/form-field';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @Component({
   selector: 'app-dropdown',
@@ -20,6 +21,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     // MatSelectModule,
     // MatFormFieldModule,
     NzSelectModule,
+    NzFormModule,
   ],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
@@ -29,4 +31,10 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 })
 export class DropdownComponent {
   @Input() field: Field;
+  currentColor: string;
+
+  changeSelectedColor(selectedColor) {
+    console.log(selectedColor);
+    this.currentColor = selectedColor;
+  }
 }

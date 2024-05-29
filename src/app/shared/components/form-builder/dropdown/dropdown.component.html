@@ -1,32 +1,25 @@
 <div class="flex flex-col" [ngClass]="field.colSize">
-    <!-- <label
-        class="text-xs"
-        [for]="field.formControlName"
-    >
-        {{ field.label }}
-    </label>
-    <select
-        class="h-8 mt-2 px-5 py-1 bg-white border border-slate-100 outline-none rounded-lg"
-        [ngClass]="field.colSize"
-        [formControlName]="field.formControlName"
-    >
-        @for (option of field.options; track option) {
-            <option [value]="option.value">{{ option.label }}</option>
-        }
-    </select> -->
-    <!-- <mat-form-field matFormFieldControl>
-        <mat-label>{{ field.label }}</mat-label>
-        <mat-select
-            matNativeControl
-            [formControlName]="field.formControlName">
-                @for (option of field.options; track option) {
-                    <mat-option [value]="option.value">{{ option.label }}</mat-option>
-                }
-        </mat-select>
-    </mat-form-field> -->
-    <nz-select nzShowSearch [nzPlaceHolder]="field.options[0].label">
-        @for (option of field.options; track option) {
-            <nz-option [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-        }
-    </nz-select>
+    <form nz-form>
+        <nz-form-item class="mb-0">
+            <nz-form-label class="text-xs font-normal" [nzSpan]="24" [nzFor]="field.formControlName">{{ field.label }}</nz-form-label>
+            <nz-form-control [nzSpan]="24" class="bg-white rounded-lg">
+                @if (field.colors) {
+                        <div class="h-3 w-10/12 rounded-lg absolute top-1/3 left-8" [ngStyle]="{backgroundColor: currentColor}"></div>
+                        <nz-select #colorSelect class="h-8 px-5 bg-transparent border border-slate-100 outline-none rounded-lg" (ngModelChange)="changeSelectedColor(colorSelect.value)"  nzShowSearch [nzBorderless]="true" [formControlName]="field.formControlName">
+                            @for (option of field.options; track option) {
+                                <nz-option [nzLabel]="option.label" [nzValue]="option.value" [nzCustomContent]="true">
+                                    <div class="h-3 w-full rounded-lg" [ngStyle]="{backgroundColor: option.value}"></div>
+                                </nz-option>
+                            }
+                        </nz-select>
+                    } @else {
+                        <nz-select class="h-8 px-5 bg-white border border-slate-100 outline-none rounded-lg" nzShowSearch [nzBorderless]="true" [formControlName]="field.formControlName">
+                            @for (option of field.options; track option) {
+                                <nz-option [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+                            }
+                        </nz-select>
+                    }
+            </nz-form-control>
+        </nz-form-item>
+    </form>
 </div>

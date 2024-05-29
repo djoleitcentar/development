@@ -23,7 +23,7 @@ export const projectFilterFields = [
     label: 'Color',
     placeholder: '',
     formControlName: 'color',
-    value: 5,
+    value: '#F43F5E',
     options: [
       { value: '#F43F5E' },
       { value: '#EC4899' },
@@ -43,6 +43,7 @@ export const projectFilterFields = [
       { value: '#EF4444' },
       { value: '#78716C' },
     ],
+    colors: true,
   },
   {
     type: 'textarea',
