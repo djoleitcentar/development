@@ -1,8 +1,8 @@
-<div class="flex flex-col" [ngClass]="field.colSize">
+<div class="flex flex-col" [ngClass]="field.colSize" >
     <form nz-form>
         <nz-form-item class="flex flex-col justify-start">
             <nz-form-label class="text-xs font-normal" [nzSpan]="24" [nzFor]="field.formControlName">{{ field.label }}</nz-form-label>
-            <nz-form-control [nzSpan]="24">
+            <nz-form-control>
                 <input class="h-8 px-5 py-1 bg-white border border-slate-100 outline-none rounded-lg" nz-input [name]="field.formControlName" [type]="field.type" [id]="field.formControlName" [formControlName]="field.formControlName" />
             </nz-form-control>
         </nz-form-item>

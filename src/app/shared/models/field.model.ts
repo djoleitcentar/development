@@ -2,6 +2,7 @@ export type Field = {
   type?: string;
   ctrlType: string;
   colSize: string;
+  nzSpan?: number;
   label: string;
   placeholder?: string;
   formControlName: string;

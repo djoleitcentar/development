@@ -9,6 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { UpdatePageComponent } from './projects/update-project/update-page/update-page.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
+import { ProfileComponent } from './shared/components/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'homelayout' },
@@ -34,6 +35,7 @@ export const routes: Routes = [
       { path: 'goals/create', component: CreateProjectComponent },
       { path: 'notifications', component: SidebarComponent },
       { path: 'settings', component: SidebarComponent },
+      { path: 'profile', component: ProfileComponent },
     ],
   },
   { path: '**', redirectTo: '/' },

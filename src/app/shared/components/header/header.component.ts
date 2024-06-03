@@ -1,17 +1,21 @@
 import { NgClass } from '@angular/common';
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgClass],
-  templateUrl: './header.component.html'
+  imports: [NgClass, RouterLink],
+  templateUrl: './header.component.html',
 })
 export class HeaderComponent {
   isDropdownOpen: boolean = false;
 
-  constructor(private loginService: LoginService, private elementRef: ElementRef) {}
+  constructor(
+    private loginService: LoginService,
+    private elementRef: ElementRef
+  ) {}
 
   @HostListener('click')
   toggleDropdown() {
@@ -20,7 +24,10 @@ export class HeaderComponent {
 
   @HostListener('document:click', ['$event'])
   handleClickOutside(event) {
-    if (this.isDropdownOpen && !this.elementRef.nativeElement.contains(event.target)) {
+    if (
+      this.isDropdownOpen &&
+      !this.elementRef.nativeElement.contains(event.target)
+    ) {
       this.isDropdownOpen = false;
     }
   }
